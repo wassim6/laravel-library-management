@@ -1,0 +1,34 @@
+php artisan route:list
+php artisan make:model Book -m
+php artisan make:migration create_books-table --create=books
+php artisan make:migration add_image_category --table=categories
+php artisan migrate:rollback
+php artisan make:controller BooksController --resource
+php artisan make:controller BooksController --plain
+php artisan make:request AddBookRequest
+php artisan make:middleware role
+
+Book::find(3) //null
+Book::findOrFail(3) // exeption
+Book::where('title', 'Book 1')->select(['id', 'title'])->first();
+Book::where('title', 'Book 1')->select(['id', 'title'])->get();
+Book::find(3)->delete()
+
+->whereRaw('created_at < NOW()');
+->where('title', 'LIKE', '%'. $q .'%');
+
+composer create-project laravel/laravel --prefer-dist library
+
+composer require barryvdh/laravel-debugbar
+config/app.php :
+	Barryvdh\Debugbar\ServiceProvider::class,
+
+	
+composer require "laravelcollective/html":"^5.3.0"
+config/app.php : 
+    Collective\Html\HtmlServiceProvider::class,
+	
+	'Form' => Collective\Html\FormFacade::class,
+    'Html' => Collective\Html\HtmlFacade::class,
+
+
